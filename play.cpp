@@ -1,11 +1,7 @@
-#include <iostream>
 #include <windows.h>
 
 //в параметры компилятора
 //-finput-charset=CP1251 -fexec-charset=UTF-8
-
-#define WM_APPCOMMAND                               0x0319
-#define APPCOMMAND_MEDIA_PLAY                           46
 
 #define CLASS_NAME_MAX_LENGTH                          256
 

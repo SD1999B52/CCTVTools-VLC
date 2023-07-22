@@ -1,10 +1,7 @@
-#include <iostream>
 #include <windows.h>
 
 //в параметры компилятора
 //-finput-charset=CP1251 -fexec-charset=UTF-8
-
-#define WM_CLOSE                                    0x0010
 
 #define CLASS_NAME_MAX_LENGTH                          256
 

@@ -31,8 +31,6 @@ const int VLC_NUMBER = COLUMNS_NUMBER * ROWS_NUMBER;
 int cNum = 0;
 int rNum = 0;
 
-//using namespace std;
-
 BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
 	int nLength = CLASS_NAME_MAX_LENGTH;
 	int tLength = GetWindowTextLength(hwnd);
@@ -64,12 +62,16 @@ BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
 		(cNum + 1) - rWidth * cNum;
 		int yPos = rNum * VLC_HEIGHT + tWidth * 
 		(rNum + 1) - bWidth * rNum;*/
-		
+		/*
+		LONG lStyle = GetWindowLong(hwnd, GWL_STYLE);
+		lStyle &= ~(WS_BORDER | WS_THICKFRAME);
+		SetWindowLong(hwnd, GWL_STYLE, lStyle);
+		*/
 		int xPos = cNum * VLC_WIDTH;
 		int yPos = rNum * VLC_HEIGHT;
 		
 		SetWindowPos(hwnd, HWND_TOP, xPos, yPos, 
-		VLC_WIDTH, VLC_HEIGHT, SWP_DRAWFRAME);
+		VLC_WIDTH, VLC_HEIGHT, SWP_SHOWWINDOW);
 		
 		if (cNum < COLUMNS_NUMBER - 1) {
 			cNum++;

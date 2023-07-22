@@ -3,8 +3,6 @@
 #include <math.h>
 #include <shlwapi.h>
 
-#include <string.h>
-
 //в параметры компилятора
 //-finput-charset=CP1251 -fexec-charset=UTF-8
 

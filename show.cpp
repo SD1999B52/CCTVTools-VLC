@@ -23,8 +23,7 @@ BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
 	
 	if ((nFound) & (tFound)) {
 		
-		SendMessage(hwnd, WM_APPCOMMAND, 0, 
-		MAKELPARAM(0, APPCOMMAND_MEDIA_PAUSE));
+		SendMessage(hwnd, WM_SYSCOMMAND, SC_RESTORE, 0);
 	}
 	
 	delete [] cName;
