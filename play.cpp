@@ -1,6 +1,6 @@
 #include <windows.h>
 
-//в параметры компилятора
+//РІ РїР°СЂР°РјРµС‚СЂС‹ РєРѕРјРїРёР»СЏС‚РѕСЂР° 
 //-finput-charset=CP1251 -fexec-charset=UTF-8
 
 #define CLASS_NAME_MAX_LENGTH                          256
