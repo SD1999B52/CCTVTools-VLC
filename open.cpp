@@ -3,10 +3,10 @@
 #include <math.h>
 #include <shlwapi.h>
 
-//в параметры компилятора
+//РІ РїР°СЂР°РјРµС‚СЂС‹ РєРѕРјРїРёР»СЏС‚РѕСЂР° 
 //-finput-charset=CP1251 -fexec-charset=UTF-8
 
-//в параметры линкера
+//РІ РїР°СЂР°РјРµС‚СЂС‹ Р»РёРЅРєРµСЂР° 
 //-lshlwapi
 
 #define VLC_WIDTH                                            500
@@ -20,7 +20,7 @@
 #define VLC_PLAYLIST_OPEN   L"<?xml version=\"1.0\" encoding=\"\
 UTF-8\"?>\n<playlist xmlns=\"http://xspf.org/ns/0/\" xmlns:vlc=\
 \"http://www.videolan.org/vlc/playlist/ns/0/\" version=\"1\">\n\
-\t<title>Плейлист</title>\n\t<trackList>\n"
+\t<title>ГЏГ«ГҐГ©Г«ГЁГ±ГІ</title>\n\t<trackList>\n"
 
 #define VLC_PLAYLIST_CLOSE      L"\t</trackList>\n</playlist>\n"
 
@@ -59,14 +59,14 @@ const WCHAR *VLC_HOME = _wgetenv(L"VLC_HOME");
 
 using namespace std;
 
-//создание/нет папки буфера
+//СЃРѕР·РґР°РЅРёРµ/РЅРµС‚ РїР°РїРєРё Р±СѓС„РµСЂР°
 void buffer() {
 	if (!PathFileExistsW(PLAYLIST_BUFFER)) {
 		CreateDirectoryW(PLAYLIST_BUFFER, NULL);
 	}
 }
 
-//сброс настроек интерфейса VLC
+//СЃР±СЂРѕСЃ РЅР°СЃС‚СЂРѕРµРє РёРЅС‚РµСЂС„РµР№СЃР° VLC
 void reset() {
 	wstring pBuffer(APPDATA);
 	pBuffer.append(L"\\");
@@ -77,7 +77,7 @@ void reset() {
 	}
 }
 
-//получить количество файлов в папке
+//РїРѕР»СѓС‡РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ С„Р°Р№Р»РѕРІ РІ РїР°РїРєРµ
 long files(const WCHAR *fPath) {
 	wstring pBuffer(fPath);
 	pBuffer.append(L"\\*");
@@ -104,7 +104,7 @@ long files(const WCHAR *fPath) {
 	return nFiles;
 }
 
-//запись текста в файл
+//Р·Р°РїРёСЃСЊ С‚РµРєСЃС‚Р° РІ С„Р°Р№Р»
 void write(const WCHAR *wText, const WCHAR *fPath) {
 	HANDLE fHandle = CreateFileW(fPath, GENERIC_WRITE, 0, NULL, 
 	CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
@@ -115,13 +115,13 @@ void write(const WCHAR *wText, const WCHAR *fPath) {
 	CloseHandle(fHandle);
 }
 
-//запуск программы
+//Р·Р°РїСѓСЃРє РїСЂРѕРіСЂР°РјРјС‹
 void start(const WCHAR *pPath, const WCHAR *pParams) {
 	ShellExecuteW(NULL, L"open", pPath, pParams, NULL, 
 	SW_RESTORE);
 }
 
-//замена символов в строке
+//Р·Р°РјРµРЅР° СЃРёРјРІРѕР»РѕРІ РІ СЃС‚СЂРѕРєРµ
 void replace(WCHAR *rText, WCHAR rWchar, WCHAR aWchar) {
 	SIZE_T tLength = wcslen(rText);
 	
@@ -141,21 +141,21 @@ void open(const WCHAR *fVlc, const WCHAR *fVideo) {
 	wcsncpy(uPath, fVideo, fLength + 1);
 	replace(uPath, L'\\', L'/');
 	
-	//добавляем для получения всех файлов в папке
+	//РґРѕР±Р°РІР»СЏРµРј РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РІСЃРµС… С„Р°Р№Р»РѕРІ РІ РїР°РїРєРµ
 	wstring aVideo(wPath);
 	aVideo.append(L"\\*");
 	
-	//добавляем кавычки для командной строки
+	//РґРѕР±Р°РІР»СЏРµРј РєР°РІС‹С‡РєРё РґР»СЏ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё 
 	wstring qVlc(L"\"");
 	qVlc.append(fVlc);
 	qVlc.append(L"\\");
 	qVlc.append(VLC_APP);
 	qVlc.append(L"\"");
 	
-	//количество файлов в папке
+	//РєРѕР»РёС‡РµСЃС‚РІРѕ С„Р°Р№Р»РѕРІ РІ РїР°РїРєРµ
 	long nFiles = files(wPath);
 	
-	//расчет количества видео на одну форму VLC
+	//СЂР°СЃС‡РµС‚ РєРѕР»РёС‡РµСЃС‚РІР° РІРёРґРµРѕ РЅР° РѕРґРЅСѓ С„РѕСЂРјСѓ VLC
 	long nVideos = ceil((double)nFiles / (double)VLC_NUMBER);
 	
 	WIN32_FIND_DATAW dFile;
@@ -186,7 +186,7 @@ void open(const WCHAR *fVlc, const WCHAR *fVideo) {
 					
 					pVlc.append(VLC_PLAYLIST_CLOSE);
 					
-					//путь сохранения плейлиста
+					//РїСѓС‚СЊ СЃРѕС…СЂР°РЅРµРЅРёСЏ РїР»РµР№Р»РёСЃС‚Р°
 					wstring pPlaylist(PLAYLIST_BUFFER);
 					pPlaylist.append(L"\\");
 					pPlaylist.append(to_wstring(cVlc));
@@ -194,7 +194,7 @@ void open(const WCHAR *fVlc, const WCHAR *fVideo) {
 					
 					write(pVlc.data(), pPlaylist.data());
 					
-					//добавляем кавычки для командной строки
+					//РґРѕР±Р°РІР»СЏРµРј РєР°РІС‹С‡РєРё РґР»СЏ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё
 					wstring qPlaylist(VLC_PARAMETERS);
 					qPlaylist.append(L" \"");
 					qPlaylist.append(pPlaylist.data());
@@ -230,7 +230,7 @@ int main() {
 		SIZE_T lValue = MAX_PATH;
 		WCHAR *tValue = new WCHAR[MAX_PATH];
 		
-		//для 64 bit Windows
+		//РґР»СЏ 64 bit Windows 
 		LSTATUS s64 = RegGetValueW(
 			HKEY_LOCAL_MACHINE, 
 			VLC_REGISTRY_KEY, 
@@ -241,7 +241,7 @@ int main() {
 			&lValue
 		);
 		
-		//для 32 bit Windows
+		//РґР»СЏ 32 bit Windows 
 		LSTATUS s32 = RegGetValueW(
 			HKEY_LOCAL_MACHINE, 
 			VLC_REGISTRY_KEY, 
