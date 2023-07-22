@@ -2,10 +2,10 @@
 #include <math.h>
 //#include <dwmapi.h>
 
-//в параметры компилятора
+//РІ РїР°СЂР°РјРµС‚СЂС‹ РєРѕРјРїРёР»СЏС‚РѕСЂР° 
 //-finput-charset=CP1251 -fexec-charset=UTF-8
 
-//в параметры линкера
+//РІ РїР°СЂР°РјРµС‚СЂС‹ Р»РёРЅРєРµСЂР°
 //-lshlwapi -ldwmapi
 
 #define VLC_WIDTH                                     500
