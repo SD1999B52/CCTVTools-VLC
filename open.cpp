@@ -15,7 +15,7 @@
 #define VLC_APP                                       L"vlc.exe"
 
 #define VLC_PARAMETERS   L"--no-qt-video-autoresize --autoscale\
- --no-playlist-autostart --no-start-paused"
+ --no-playlist-autostart --no-start-paused --qt-auto-raise=0"
 
 #define VLC_PLAYLIST_OPEN   L"<?xml version=\"1.0\" encoding=\"\
 UTF-8\"?>\n<playlist xmlns=\"http://xspf.org/ns/0/\" xmlns:vlc=\
